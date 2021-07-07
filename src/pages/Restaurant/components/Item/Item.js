@@ -3,15 +3,15 @@ import "./Item.css"
 import Draggable from 'react-draggable';
 
 
-const Item = ({name}) => {
+const Item = ({ name }) => {
 
-    return (
-      <Draggable>
+  return (
+    <Draggable>
       <div className="Item">
-         <i class="fas fa-caret-right"></i><span className="ms-2">{name}</span>
+        <i class="fas fa-caret-right"></i><span className="ms-2">{name}</span>
       </div>
-      </Draggable>
-    )
+    </Draggable>
+  )
 }
 
 export default Item
