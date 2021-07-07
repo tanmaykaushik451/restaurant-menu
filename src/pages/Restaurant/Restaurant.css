@@ -1,0 +1,12 @@
+/* .Restaurant{
+    width: 80%;
+    height: 80%;
+} */
+
+.menu-item{
+    font-weight: bold;
+}
+
+.sub-menu-item{
+    margin-left: 15px;
+}

@@ -1,9 +1,10 @@
 import Restaurant from "./pages/Restaurant/Restaurant";
+import "./App.css"
 
 function App() {
 
   return (
-    <div>
+    <div className="App">
       <Restaurant/>
     </div>
   );

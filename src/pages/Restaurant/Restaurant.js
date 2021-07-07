@@ -1,5 +1,6 @@
-import React, { useEffect, useState } from 'react'
-import {getRestaurants} from "./api"
+import React, { useEffect, useState } from 'react';
+import {getRestaurants} from "./api";
+import "./Restaurant.css";
 
 const Restaurant = () => {
 
@@ -15,14 +16,14 @@ const Restaurant = () => {
 
 
     
-    console.log(restaurants, "r")
+    // console.log(restaurants, "r")
 
     const recursion = (item) => {
-        console.log(item)
+        // console.log(item)
         return (
             <>
                 {
-                    item?.selected === 1 && <div key={item?.id} style={{ background: "blue" }}>
+                    item?.selected === 1 && <div className="sub-menu-item" key={item?.id}>
                         {item?.name}
                         {item?.children?.map((subitem) => {
                             return (
@@ -42,7 +43,7 @@ const Restaurant = () => {
         <div>
             {restaurants?.map((restaurant) => {
                 return (
-                    <div key={restaurant?.RestaurantID} >
+                    <div className="menu-item" key={restaurant?.RestaurantID} >
                         {restaurant?.RestaurantName}
                         {restaurant?.menu?.map((menuitem) => {
                             return (
@@ -52,7 +53,7 @@ const Restaurant = () => {
                                             <>
                                                 {
                                                     item?.type == "item" && item?.selected === 1 &&
-                                                    <div key={item?.id} style={{ background: "grey" }}>
+                                                    <div className="sub-menu-item" key={item?.id}>
                                                         {item?.name}
                                                         {item?.children?.map((d) => {
                                                             return (
