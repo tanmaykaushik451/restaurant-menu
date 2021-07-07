@@ -1,4 +1,5 @@
 import React, { useEffect, useState } from 'react';
+import Loader from '../../layout/Loader';
 import {getRestaurants} from "./api";
 import Item from './components/Item';
 import "./Restaurant.css";
@@ -6,16 +7,20 @@ import "./Restaurant.css";
 const Restaurant = () => {
 
     const [restaurants, setRestaurants] = useState([])
+    const [loading,setLoading] = useState(false)
 
     useEffect(() => {
+        setLoading(true)
         getRestaurants().then((res) => {
             setRestaurants(res?.data?.body?.Recommendations)
+            setLoading(false)
         }).catch((e) => {
             console.log(e)
+            setLoading(false)
         })
     }, [])
 
-    const recursion = (item) => {
+    const recursionMenu = (item) => {
         return (
             <>
                 {
@@ -24,7 +29,7 @@ const Restaurant = () => {
                         {item?.children?.map((subitem) => {
                             return (
                                 <>
-                                    {recursion(subitem)}
+                                    {recursionMenu(subitem)}
                                 </>
                             )
                         })}
@@ -36,10 +41,11 @@ const Restaurant = () => {
 
 
     return (
-        <div>
+        <>
+        {!loading ? <div>
             {restaurants?.map((restaurant) => {
                 return (
-                    <div className="menu-item" key={restaurant?.RestaurantID} >
+                    <div className="menu-item my-1" key={restaurant?.RestaurantID} >
                         <Item name={restaurant?.RestaurantName}/>
                         {restaurant?.menu?.map((menuitem) => {
                             return (
@@ -54,7 +60,7 @@ const Restaurant = () => {
                                                         {item?.children?.map((d) => {
                                                             return (
                                                                 <>
-                                                                    {recursion(d)}
+                                                                    {recursionMenu(d)}
                                                                 </>
                                                             )
                                                         })}
@@ -71,7 +77,8 @@ const Restaurant = () => {
                     </div>
                 )
             })}
-        </div>
+        </div> : <Loader/>}
+        </>
     )
 }
 
