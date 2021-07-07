@@ -1,0 +1,5 @@
+.Item{
+    display: flex;
+    align-items: baseline;
+    cursor: pointer;
+}

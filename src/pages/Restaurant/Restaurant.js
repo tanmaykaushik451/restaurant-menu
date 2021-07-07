@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import Loader from '../../layout/Loader';
 import {getRestaurants} from "./api";
-import Item from './components/Item';
+import Item from './components/Item/Item';
 import "./Restaurant.css";
 
 const Restaurant = () => {
