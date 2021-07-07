@@ -4,6 +4,7 @@ import {getRestaurants} from "./api";
 import Item from './components/Item/Item';
 import "./Restaurant.css";
 
+
 const Restaurant = () => {
 
     const [restaurants, setRestaurants] = useState([])
@@ -42,10 +43,10 @@ const Restaurant = () => {
 
     return (
         <>
-        {!loading ? <div>
+        {!loading ? <div className="my-3">
             {restaurants?.map((restaurant) => {
                 return (
-                    <div className="menu-item my-1" key={restaurant?.RestaurantID} >
+                    <div className="my-1" key={restaurant?.RestaurantID} >
                         <Item name={restaurant?.RestaurantName}/>
                         {restaurant?.menu?.map((menuitem) => {
                             return (
