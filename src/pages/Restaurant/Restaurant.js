@@ -43,7 +43,11 @@ const Restaurant = () => {
 
     return (
         <>
-        {!loading ? <div className="my-3">
+        {!loading ? <div className="my-3 d-flex flex-column">
+            <div>
+                <h3 className="font-bold">Restauraunt Menu</h3>
+            </div>
+            <div>
             {restaurants?.map((restaurant) => {
                 return (
                     <div className="my-1" key={restaurant?.RestaurantID} >
@@ -78,6 +82,7 @@ const Restaurant = () => {
                     </div>
                 )
             })}
+            </div>
         </div> : <Loader/>}
         </>
     )
